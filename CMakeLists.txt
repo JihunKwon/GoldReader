@@ -1,5 +1,4 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6 FATAL_ERROR)
-//This is just the modification trial
 
 PROJECT(GoldReader)
 
@@ -21,8 +20,8 @@ TARGET_LINK_LIBRARIES(BGMSC ${Geant4_LIBRARIES})
 
 set(BGMSC_SCRIPTS
     init_vis.mac
-    PSF_-200.IAEAheader
-    PSF_-200.IAEAphsp
+    PSF_1e-05.IAEAheader
+    PSF_1e-05.IAEAphsp
 )
 
 foreach(_script ${BGMSC_SCRIPTS})

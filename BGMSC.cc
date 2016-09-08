@@ -1,5 +1,4 @@
 #undef G4MULTITHREADED
-
 #undef G4VIS_USE
 
 #include <cstdio>
@@ -24,6 +23,9 @@
 #include "BGMSCDetectorConstruction.hh"
 #include "BGMSCPrimaryGeneratorAction.hh"
 #include "BGMSCActionInitialization.hh"
+#include "GoldParallelWorld.hh"
+#include "G4GeometryTolerance.hh"
+#include "G4GeometryManager.hh"
 
 #include "G4CsvAnalysisManager.hh"
 
@@ -43,7 +45,10 @@ int main(int argc,char** argv)
     G4RunManager* runManager = new G4RunManager;
 #endif
 
+    G4GeometryManager::GetInstance()->SetWorldMaximumExtent(1000*nm);
+
     BGMSCDetectorConstruction* massWorld = new BGMSCDetectorConstruction;
+    massWorld->RegisterParallelWorld(new GoldParallelWorld("GoldParallelWorld"));
     runManager->SetUserInitialization(massWorld);
 
     G4VModularPhysicsList* physicsList = new BGMSCPhysicsList;
@@ -67,7 +72,11 @@ int main(int argc,char** argv)
 
 #endif
 
-    runManager->BeamOn(100000);
+
+    std::cout << G4GeometryTolerance::GetInstance()->GetRadialTolerance()/nm << std::endl;
+    std::cout << G4GeometryTolerance::GetInstance()->GetSurfaceTolerance()/nm << std::endl;
+
+    runManager->BeamOn(1000);
 
     delete runManager;
     return 0;

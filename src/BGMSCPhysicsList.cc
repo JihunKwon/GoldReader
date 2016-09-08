@@ -25,6 +25,7 @@
 #include "G4EmParameters.hh"
 #include "CLHEP/Units/SystemOfUnits.h"
 #include "G4WentzelVIModel.hh"
+#include "G4EmPenelopePhysics.hh"
 
 using namespace CLHEP;
 
@@ -53,7 +54,7 @@ BGMSCPhysicsList::BGMSCPhysicsList() : G4VModularPhysicsList()
 
   SetVerboseLevel(1);
 
-  RegisterPhysics(new G4EmStandardPhysics_option4);
+  RegisterPhysics(new G4EmPenelopePhysics);
   // RegisterPhysics(new PhysListEmStandardSingleSc);
   RegisterPhysics(new G4HadronPhysicsQGSP_BIC);
   RegisterPhysics(new G4EmExtraPhysics);
@@ -68,7 +69,25 @@ BGMSCPhysicsList::~BGMSCPhysicsList()
 
 void BGMSCPhysicsList::ConstructProcess()
 {
+    AddParallelScoring();
     G4VModularPhysicsList::ConstructProcess();
+}
+
+void BGMSCPhysicsList::AddParallelScoring()
+{
+    G4ParallelWorldScoringProcess* theParallelWorldScoringProcess
+            = new G4ParallelWorldScoringProcess("ParaWorldScoringProc");
+    theParallelWorldScoringProcess->SetParallelWorld("GoldParallelWorld");
+
+    theParticleIterator->reset();
+    while((*theParticleIterator)())
+    {
+        G4ProcessManager* pmanager = theParticleIterator->value()->GetProcessManager();
+        pmanager->AddProcess(theParallelWorldScoringProcess);
+        pmanager->SetProcessOrderingToLast(theParallelWorldScoringProcess, idxAtRest);
+        pmanager->SetProcessOrdering(theParallelWorldScoringProcess, idxAlongStep, 1);
+        pmanager->SetProcessOrderingToLast(theParallelWorldScoringProcess, idxPostStep);
+    }
 }
 
 void BGMSCPhysicsList::SetCuts()

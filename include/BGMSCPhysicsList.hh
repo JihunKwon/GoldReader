@@ -8,16 +8,17 @@ class BGMSCPhysicsList: public G4VModularPhysicsList
 {
 public:
 
-  BGMSCPhysicsList();
-  virtual ~BGMSCPhysicsList();
+    BGMSCPhysicsList();
+    virtual ~BGMSCPhysicsList();
 
-  void SetCuts();
-  void ConstructProcess();
+    void SetCuts();
+    void AddParallelScoring();
+    void ConstructProcess();
 
 private:
-  G4double cutForGamma;
-  G4double cutForElectron;
-  G4double cutForPositron;
+    G4double cutForGamma;
+    G4double cutForElectron;
+    G4double cutForPositron;
 };
 
 #endif
