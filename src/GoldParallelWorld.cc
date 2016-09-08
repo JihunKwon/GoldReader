@@ -12,6 +12,7 @@
 #include "G4PVDivision.hh"
 #include "G4PVParameterised.hh"
 #include "G4PSDoseDeposit3D.hh"
+#include <math.h>
 
 GoldParallelWorld::GoldParallelWorld(G4String worldName)
     :G4VUserParallelWorld(worldName)
@@ -28,11 +29,11 @@ void GoldParallelWorld::Construct()
     // Place volumes in the parallel world here
     G4double nDivisions = 100.0;
 
-    G4Sphere *outerSphere = new G4Sphere("OuterSphere", 0, 1000*nm, 0*rad, 2.*M_PI*rad, 0.0*rad, 1.*M_PI*rad);
+    G4Sphere *outerSphere = new G4Sphere("OuterSphere", 0, 1000*nm, 0*rad, 360*deg, 0.0*rad, 180*deg);
     G4LogicalVolume *outerSphereLog = new G4LogicalVolume(outerSphere, 0, "OuterSphereLog");
     new G4PVPlacement(0, G4ThreeVector(0, 0, 0), outerSphereLog, "OuterSpherePhys", worldLog, 0, 0);
 
-    G4VSolid *cocentrSphere  = new G4Sphere("CocentrSphere", 0, 1000*nm, 0*rad, 2.*M_PI*rad, 0.0*rad, 1.*M_PI*rad);
+    G4VSolid *cocentrSphere  = new G4Sphere("CocentrSphere", 0, 1000*nm, 0*rad, 360*deg, 0.0*rad, 180*deg);
     CocentrSphereLog = new G4LogicalVolume(cocentrSphere, 0, "CocentrSphereLog");
     G4VPVParameterisation* sphereParam = new GoldSphereParameterisation;
     new G4PVParameterised("Spheres", CocentrSphereLog, outerSphereLog, kUndefined, 100, sphereParam);
