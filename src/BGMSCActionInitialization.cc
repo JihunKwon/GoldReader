@@ -1,6 +1,7 @@
 #include "BGMSCPrimaryGeneratorAction.hh"
 #include "BGMSCActionInitialization.hh"
 #include "GoldRunAction.hh"
+#include "BGMSCSteppingAction.hh"
 
 BGMSCActionInitialization::BGMSCActionInitialization(BGMSCDetectorConstruction *geometry)
     : G4VUserActionInitialization()
@@ -18,4 +19,5 @@ void BGMSCActionInitialization::Build() const
 {
     SetUserAction(new BGMSCPrimaryGeneratorAction);
     SetUserAction(new GoldRunAction("Detector"));
+    SetUserAction(new BGMSCSteppingAction);
 }
