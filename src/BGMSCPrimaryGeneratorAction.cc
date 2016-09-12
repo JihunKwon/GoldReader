@@ -30,18 +30,21 @@ BGMSCPrimaryGeneratorAction::~BGMSCPrimaryGeneratorAction()
 
 void BGMSCPrimaryGeneratorAction::GeneratePrimaries(G4Event* event)
 {
-    //     Source->GeneratePrimaryVertex(event);
-    IAEAReader->GeneratePrimaryVertex(event);
-    G4int num = IAEAReader->GetUsedOriginalParticles();
-    //    std::vector<G4int>* type = IAEAReader->GetParticleTypeVector();
-    std::vector<G4ThreeVector>* momentum = IAEAReader->GetMomentumVector();
-    std::vector<G4ThreeVector>* pos = IAEAReader->GetPositionVector();
-    G4ThreeVector position = (*pos)[0];
-    G4cout << "Radius is " << sqrt((pow(position.x(),2)+pow(position.y(),2)+pow(position.z(),2)))/nm << G4endl;
-    G4long total = IAEAReader->GetTotalParticles();
-    std::vector<G4double>* energy = IAEAReader->GetEnergyVector();
+//    for (G4int i; i < 1000; i++)
+//    {
+        //     Source->GeneratePrimaryVertex(event);
+        IAEAReader->GeneratePrimaryVertex(event);
+        G4int num = IAEAReader->GetUsedOriginalParticles();
+        //    std::vector<G4int>* type = IAEAReader->GetParticleTypeVector();
+        std::vector<G4ThreeVector>* momentum = IAEAReader->GetMomentumVector();
+        std::vector<G4ThreeVector>* pos = IAEAReader->GetPositionVector();
+        G4ThreeVector position = (*pos)[0];
+        G4cout << "Radius is " << sqrt((pow(position.x(),2)+pow(position.y(),2)+pow(position.z(),2)))/nm << G4endl;
+        G4long total = IAEAReader->GetTotalParticles();
+        std::vector<G4double>* energy = IAEAReader->GetEnergyVector();
 
-    std::ofstream outfile;
-    outfile.open("Gold_Position.txt", std::ios_base::app);
-    outfile << position.x()/nm << " " << position.y()/nm << " " << position.z()/nm << "\n";
+        std::ofstream outfile;
+        outfile.open("Gold_Position.txt", std::ios_base::app);
+        outfile << position.x()/nm << " " << position.y()/nm << " " << position.z()/nm << "\n";
+//    }
 }
