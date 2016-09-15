@@ -20,9 +20,9 @@ public:
     void GeneratePrimaries(G4Event* event);
 
 private:
- //   G4ParticleGun* Source;
+    G4ParticleGun* Source;
 
-    G4IAEAphspReader* IAEAReader;
+    //G4IAEAphspReader* IAEAReader;
 };
 
 #endif

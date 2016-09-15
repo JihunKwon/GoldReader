@@ -27,7 +27,7 @@ void GoldParallelWorld::Construct()
     G4LogicalVolume *worldLog = ghostWorld->GetLogicalVolume();
 
     // Place volumes in the parallel world here
-    G4double nDivisions = 100.0;
+    //G4double nDivisions = 100.0;
 
     G4Sphere *outerSphere = new G4Sphere("OuterSphere", 0, 1000*nm, 0*rad, 360*deg, 0.0*rad, 180*deg);
     G4LogicalVolume *outerSphereLog = new G4LogicalVolume(outerSphere, 0, "OuterSphereLog");
@@ -36,7 +36,7 @@ void GoldParallelWorld::Construct()
     G4VSolid *cocentrSphere  = new G4Sphere("CocentrSphere", 0, 1000*nm, 0*rad, 360*deg, 0.0*rad, 180*deg);
     CocentrSphereLog = new G4LogicalVolume(cocentrSphere, 0, "CocentrSphereLog");
     G4VPVParameterisation* sphereParam = new GoldSphereParameterisation;
-    new G4PVParameterised("Spheres", CocentrSphereLog, outerSphereLog, kUndefined, 100, sphereParam);
+    new G4PVParameterised("Spheres", CocentrSphereLog, outerSphereLog, kUndefined, 1, sphereParam);
 
     G4VisAttributes* visAttributes = new G4VisAttributes;
     visAttributes->SetColor(0,1,1);
