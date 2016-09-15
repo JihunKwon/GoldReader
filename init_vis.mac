@@ -2,8 +2,8 @@
 
 /vis/drawVolume worlds
 
-/vis/scene/add/trajectories
-/vis/scene/endOfEventAction accumulate
+#/vis/scene/add/trajectories
+#/vis/scene/endOfEventAction accumulate
 
-/run/beamOn 100
+#/run/beamOn 100
 
