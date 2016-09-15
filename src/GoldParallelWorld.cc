@@ -48,7 +48,8 @@ void GoldParallelWorld::ConstructSD()
     G4SDManager::GetSDMpointer()->SetVerboseLevel(1);
     G4MultiFunctionalDetector* detector = new G4MultiFunctionalDetector("Detector");
     G4VPrimitiveScorer* doseSD = new G4PSDoseDeposit("Dose");
-   // doseSD->SetUnit("MeV/g");
+    G4String unit = doseSD->GetUnit();
+    G4cout << unit << G4endl;
     detector->RegisterPrimitive(doseSD);
     // G4cout << "DOSE SCORER " << doseSD->GetUnit() << G4endl;
     SetSensitiveDetector(CocentrSphereLog, detector);
