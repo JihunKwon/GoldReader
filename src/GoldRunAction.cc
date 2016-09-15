@@ -49,6 +49,6 @@ void GoldRunAction::EndOfRunAction(const G4Run* aRun)
 
     for (int j = 0; j < 100; j++)
     {
-        GoldFile << j << " " << Cells[j]*6.24*pow(10,9)/10000000 << "\n";
+        GoldFile << j << " " << Cells[j] << "\n";
     }
 }
