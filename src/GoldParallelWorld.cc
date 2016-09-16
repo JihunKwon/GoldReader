@@ -32,10 +32,10 @@ void GoldParallelWorld::Construct()
 
     G4VSolid *cocentrSphere  = new G4Sphere("CocentrSphere", 0, 1000*nm, 0*rad, 2.*M_PI*rad, 0.0*rad, 1.*M_PI*rad);
     CocentrSphereLog = new G4LogicalVolume(cocentrSphere, 0, "CocentrSphereLog");
-    //new G4PVReplica("CocentrSpherePhys", CocentrSphereLog, outerSphereLog, kRho, 500, 10*nm, 0);
+    //new G4PVReplica("CocentrSpherePhys", CocentrSphereLog, outerSphereLog, kRho, 495, 2*nm, 0);
 
     G4VPVParameterisation* sphereParam = new GoldSphereParameterisation;
-    new G4PVParameterised("Spheres", CocentrSphereLog, outerSphereLog, kUndefined, 495, sphereParam);
+    new G4PVParameterised("Spheres", CocentrSphereLog, outerSphereLog, kUndefined, 989, sphereParam);
 
     G4VisAttributes* visAttributes = new G4VisAttributes;
     visAttributes->SetColor(0,1,1);

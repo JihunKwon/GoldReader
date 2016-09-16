@@ -11,8 +11,8 @@ GoldRun::GoldRun(const G4String detectorName, G4bool verbose) : G4Run()
     CollectionID = SDman->GetCollectionID(CollName);
     Verbose = verbose;
 
-    Cells = new G4double[100];
-    for (int i = 0; i < 100; i++)
+    Cells = new G4double[989];
+    for (int i = 0; i < 989; i++)
     {
         Cells[i] = 0;
     }
@@ -29,7 +29,6 @@ void GoldRun::RecordEvent(const G4Event* aEvent)
     {
         G4THitsMap<G4double>* HC = static_cast<G4THitsMap<G4double>*>(HCE -> GetHC(CollectionID));
         G4int i = 0;
-        G4int j = 0;
         if(HC!=NULL)
         {
             std::map<G4int, G4double*>::iterator it;
@@ -46,11 +45,8 @@ void GoldRun::Merge(const G4Run * aRun)
 {
     const GoldRun *localRun = static_cast<const GoldRun*>(aRun);
 
-    for (int i = 0; i < 100; i++)
-    {
+    for (G4int i = 0; i < 989; i++)
         Cells[i] += localRun->Cells[i];
-    }
-
     G4Run::Merge(aRun);
 }
 

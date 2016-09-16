@@ -28,6 +28,7 @@
 #include "G4GeometryManager.hh"
 
 #include "G4CsvAnalysisManager.hh"
+#include "G4Navigator.hh"
 
 #include <math.h>
 
@@ -40,12 +41,12 @@ int main(int argc,char** argv)
 
 #ifdef G4MULTITHREADED
     G4MTRunManager* runManager = new G4MTRunManager;
-    runManager->SetNumberOfThreads(8);
+    runManager->SetNumberOfThreads(1);
 #else
     G4RunManager* runManager = new G4RunManager;
 #endif
 
-    G4GeometryManager::GetInstance()->SetWorldMaximumExtent(1*nm);
+    G4GeometryManager::GetInstance()->SetWorldMaximumExtent(0.1*nm);
 
     BGMSCDetectorConstruction* massWorld = new BGMSCDetectorConstruction;
     massWorld->RegisterParallelWorld(new GoldParallelWorld("GoldParallelWorld"));
@@ -72,11 +73,10 @@ int main(int argc,char** argv)
 
 #endif
 
-
     std::cout << G4GeometryTolerance::GetInstance()->GetRadialTolerance()/nm << std::endl;
     std::cout << G4GeometryTolerance::GetInstance()->GetSurfaceTolerance()/nm << std::endl;
 
-    runManager->BeamOn(10000);
+    runManager->BeamOn(1000);
 
     delete runManager;
     return 0;

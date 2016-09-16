@@ -7,7 +7,11 @@
 
 void BGMSCSteppingAction::UserSteppingAction(const G4Step* aStep)
 {
- //   G4cout << "Step" << G4endl;
+    //kill particle
+    G4double time = aStep->GetPostStepPoint()->GetGlobalTime();
+    if(time>=100*ns){
+        G4Track * aTrack = aStep->GetTrack();
+        aTrack->SetTrackStatus(fStopAndKill); }
 }
 
 
