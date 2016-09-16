@@ -44,15 +44,15 @@ G4VPhysicalVolume* BGMSCDetectorConstruction::Construct()
     G4Material* vacuum = nistManager->FindOrBuildMaterial("G4_Galactic");
 
     // World
-    G4Box* world = new G4Box("World", 3*m, 3*m, 3*m);
+    G4Box* world = new G4Box("World", 1*um, 1*um, 1*um);
     G4LogicalVolume *worldLogic = new G4LogicalVolume(world, Water, "WorldLogic");
     G4VPhysicalVolume *worldPhys = new G4PVPlacement(0, G4ThreeVector(), worldLogic, "WorldPhys", 0, false, 0);
     worldLogic->SetVisAttributes(visAttributes);
 
-    G4Sphere *nanoPart = new G4Sphere("NanoPart", 0, 10*nm, 0*rad, 2.*M_PI*rad, 0.0*rad, 1.*M_PI*rad);
-    G4LogicalVolume *nanoPartLogic = new G4LogicalVolume(nanoPart, Au, "NanoPartLogic");
-    G4VPhysicalVolume *nanoPartPhys = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), nanoPartLogic, "NanoPartPhys", worldLogic, 0, 0);
-    nanoPartLogic->SetVisAttributes(visAttributes);
+//    G4Sphere *nanoPart = new G4Sphere("NanoPart", 0, 1001*nm, 0*rad, 2.*M_PI*rad, 0.0*rad, 1.*M_PI*rad);
+//    G4LogicalVolume *nanoPartLogic = new G4LogicalVolume(nanoPart, Au, "NanoPartLogic");
+//    G4VPhysicalVolume *nanoPartPhys = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), nanoPartLogic, "NanoPartPhys", worldLogic, 0, 0);
+//    nanoPartLogic->SetVisAttributes(visAttributes);
 
 
     return worldPhys;

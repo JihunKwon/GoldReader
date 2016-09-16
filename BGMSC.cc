@@ -28,6 +28,7 @@
 #include "G4GeometryManager.hh"
 
 #include "G4CsvAnalysisManager.hh"
+#include "G4Navigator.hh"
 
 #include <math.h>
 
@@ -45,7 +46,7 @@ int main(int argc,char** argv)
     G4RunManager* runManager = new G4RunManager;
 #endif
 
-    G4GeometryManager::GetInstance()->SetWorldMaximumExtent(1*nm);
+    G4GeometryManager::GetInstance()->SetWorldMaximumExtent(1000*nm);
 
     BGMSCDetectorConstruction* massWorld = new BGMSCDetectorConstruction;
     massWorld->RegisterParallelWorld(new GoldParallelWorld("GoldParallelWorld"));
