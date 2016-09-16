@@ -35,7 +35,7 @@ void GoldParallelWorld::Construct()
     //new G4PVReplica("CocentrSpherePhys", CocentrSphereLog, outerSphereLog, kRho, 495, 2*nm, 0);
 
     G4VPVParameterisation* sphereParam = new GoldSphereParameterisation;
-    new G4PVParameterised("Spheres", CocentrSphereLog, outerSphereLog, kUndefined, 120, sphereParam);
+    new G4PVParameterised("Spheres", CocentrSphereLog, outerSphereLog, kUndefined, 989, sphereParam);
 
     G4VisAttributes* visAttributes = new G4VisAttributes;
     visAttributes->SetColor(0,1,1);
