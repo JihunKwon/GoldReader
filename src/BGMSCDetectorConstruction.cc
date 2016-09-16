@@ -44,7 +44,7 @@ G4VPhysicalVolume* BGMSCDetectorConstruction::Construct()
 //    G4Material* vacuum = nistManager->FindOrBuildMaterial("G4_Galactic");
 
     // World
-    G4Box* world = new G4Box("World", 1*um, 1*um, 1*um);
+    G4Box* world = new G4Box("World", 10*um, 1*um, 1*um);
     G4LogicalVolume *worldLogic = new G4LogicalVolume(world, Water, "WorldLogic");
     G4VPhysicalVolume *worldPhys = new G4PVPlacement(0, G4ThreeVector(), worldLogic, "WorldPhys", 0, false, 0);
     worldLogic->SetVisAttributes(visAttributes);

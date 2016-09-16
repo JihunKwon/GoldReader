@@ -15,7 +15,7 @@ public:
 
     void ComputeDimensions (G4Sphere& sphere, const G4int copyNo, const G4VPhysicalVolume* physVol) const
     {
-        G4double step = 2.0*nm;
+        G4double step = 100.0*nm;
 //        G4cout << (step*copyNo)/nm << G4endl;
 //        G4cout << (step*(copyNo+1))/nm << G4endl;
         sphere.SetInnerRadius(10*nm + step*copyNo);

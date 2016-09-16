@@ -1,5 +1,5 @@
-//#undef G4MULTITHREADED
-//#undef G4VIS_USE
+#undef G4MULTITHREADED
+#undef G4VIS_USE
 
 #include <cstdio>
 #include <ctime>
@@ -76,7 +76,7 @@ int main(int argc,char** argv)
     std::cout << G4GeometryTolerance::GetInstance()->GetRadialTolerance()/nm << std::endl;
     std::cout << G4GeometryTolerance::GetInstance()->GetSurfaceTolerance()/nm << std::endl;
 
-    runManager->BeamOn(10);
+    runManager->BeamOn(10000);
 
     delete runManager;
     return 0;
