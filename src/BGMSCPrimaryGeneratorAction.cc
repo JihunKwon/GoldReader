@@ -16,15 +16,9 @@ BGMSCPrimaryGeneratorAction::BGMSCPrimaryGeneratorAction()
     G4String fileName = "PSF_1e-05";
     IAEAReader = new G4IAEAphspReader(fileName);
 
-    G4ThreeVector isoPos(0., 0., -4.9 *um);
+    G4ThreeVector isoPos(0., 0., 0.);
     IAEAReader->SetIsocenterPosition(isoPos);
     IAEAReader->SetTimesRecycled(0);
-
-    G4double colimAng = 90.*deg;
-    G4ThreeVector colimAxis(1.0, 0.0, 0.0);
-
-    IAEAReader->SetCollimatorAngle(colimAng);
-    IAEAReader->SetCollimatorRotationAxis(colimAxis);
 }
 
 BGMSCPrimaryGeneratorAction::~BGMSCPrimaryGeneratorAction()
@@ -50,7 +44,7 @@ void BGMSCPrimaryGeneratorAction::GeneratePrimaries(G4Event* event)
     //    //        std::vector<G4double>* energy = IAEAReader->GetEnergyVector();
 
     std::ofstream outfile;
-    outfile.open("Gold_Position.txt", std::ios_base::app);
-    outfile << position.x()/nm << " " << position.y()/nm << " " << position.z()/nm << "\n";
+//    outfile.open("Gold_Position.txt", std::ios_base::app);
+//    outfile << position.x()/nm << " " << position.y()/nm << " " << position.z()/nm << "\n";
     //    }
 }

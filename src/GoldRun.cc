@@ -35,7 +35,7 @@ void GoldRun::RecordEvent(const G4Event* aEvent)
             for ( it = HC->GetMap()->begin(); it != HC->GetMap()->end(); it++)
             {
                 i = it->first;
-                Cells[i] += (*(it->second))/CLHEP::gray;
+                Cells[i] += (*(it->second))/*/CLHEP::gray*/;
             }
         }
     }

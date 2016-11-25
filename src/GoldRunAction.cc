@@ -47,8 +47,8 @@ void GoldRunAction::EndOfRunAction(const G4Run* aRun)
 
     std::ofstream GoldFile("Gold_DoseDistribution.txt");
 
-    for (int j = 0; j < 989; j++)
-    {
+    for (int j = 0; j < 989; j++){
+
         GoldFile << j << " " << Cells[j] << "\n";
     }
 }
