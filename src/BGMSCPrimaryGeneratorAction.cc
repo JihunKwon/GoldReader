@@ -7,6 +7,25 @@ using namespace CLHEP;
 
 BGMSCPrimaryGeneratorAction::BGMSCPrimaryGeneratorAction()
 {
+    ////For CicleSource
+    //    CircleSource = new G4SingleParticleSource;
+    //    CircleSource->SetParticleDefinition(G4Gamma::Definition());
+
+    //    G4SPSEneDistribution* energy = CircleSource->GetEneDist();
+    //    energy->SetMonoEnergy(250*keV);
+
+    //    G4SPSPosDistribution* position = CircleSource->GetPosDist();
+    //    position->SetPosDisType("Plane");
+    //    position->SetPosDisShape("Circle");
+    //    position->SetRadius(50*mm);
+    //    position->SetCentreCoords(G4ThreeVector(0*m, 0*m, -201*mm));
+
+    //    G4SPSAngDistribution* angular = CircleSource->GetAngDist();
+    //    angular->SetParticleMomentumDirection(G4ThreeVector(0.0,0.0,1.0));
+    //    angular->DefineAngRefAxes("angref1", G4ThreeVector(-1.0,0.0,0.0));
+    //    CircleSource->SetNumberOfParticles(1);
+
+    ////For ParticleGun
     //    Source = new G4ParticleGun;
     //    Source->SetParticleDefinition(G4Proton::Definition());
     //    Source->SetParticleEnergy(158.6*MeV);
@@ -26,6 +45,7 @@ BGMSCPrimaryGeneratorAction::~BGMSCPrimaryGeneratorAction()
     //    delete Source;
     if (IAEAReader)
         delete IAEAReader;
+    //delete CircleSource;
 }
 
 void BGMSCPrimaryGeneratorAction::GeneratePrimaries(G4Event* event)
@@ -47,4 +67,7 @@ void BGMSCPrimaryGeneratorAction::GeneratePrimaries(G4Event* event)
 //    outfile.open("Gold_Position.txt", std::ios_base::app);
 //    outfile << position.x()/nm << " " << position.y()/nm << " " << position.z()/nm << "\n";
     //    }
+
+    ////For CicleSource
+    //CircleSource->GeneratePrimaryVertex(event);
 }
