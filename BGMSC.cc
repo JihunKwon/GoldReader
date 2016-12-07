@@ -76,7 +76,7 @@ int main(int argc,char** argv)
     std::cout << G4GeometryTolerance::GetInstance()->GetRadialTolerance()/nm << std::endl;
     std::cout << G4GeometryTolerance::GetInstance()->GetSurfaceTolerance()/nm << std::endl;
 
-    runManager->BeamOn(5000000);
+    runManager->BeamOn(10);
 
     delete runManager;
     return 0;

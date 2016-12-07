@@ -5,6 +5,7 @@
 #include "G4SPSPosDistribution.hh"
 #include "G4Types.hh"
 #include "G4ParticleGun.hh"
+#include <G4SingleParticleSource.hh>
 
 #include "G4IAEAphspReader.hh"
 
@@ -19,11 +20,13 @@ public:
 
     void GeneratePrimaries(G4Event* event);
 
+    G4SPSEneDistribution* setEnergyToBeta();
+
 private:
     // G4ParticleGun* Source;
-    //G4SingleParticleSource* CircleSource;
+    G4SingleParticleSource* CircleSource;
 
-    G4IAEAphspReader* IAEAReader;
+    //G4IAEAphspReader* IAEAReader;
 };
 
 #endif

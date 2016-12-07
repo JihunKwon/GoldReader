@@ -20,9 +20,10 @@ TARGET_LINK_LIBRARIES(BGMSC ${Geant4_LIBRARIES})
 
 set(BGMSC_SCRIPTS
     init_vis.mac
-    PSF_1e-05.IAEAheader
-    PSF_1e-05.IAEAphsp
-)
+    PSF_2.5e-05.IAEAheader
+    PSF_2.5e-05.IAEAphsp
+    Electron_EnergyDistribution.txt
+    )
 
 foreach(_script ${BGMSC_SCRIPTS})
     configure_file(
